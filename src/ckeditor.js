@@ -5,7 +5,6 @@
 
 // The editor creator to use.
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
@@ -16,7 +15,7 @@ import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Image from '@ckeditor/ckeditor5-image/src/image';
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+// import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption'; // <--- EXCLUDED
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
@@ -27,6 +26,9 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment'; // <--- ADDED
+// CUSTOM
+import ImageEmbed from './image-embed/image-embed';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -42,7 +44,7 @@ ClassicEditor.builtinPlugins = [
 	EasyImage,
 	Heading,
 	Image,
-	ImageCaption,
+//	ImageCaption, // <--- EXCLUDED
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
@@ -52,7 +54,9 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Alignment, // <--- ADDED
+	ImageEmbed // <--- ADDED
 ];
 
 // Editor configuration.
@@ -61,12 +65,14 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'alignment', // <--- ADDED
 			'bold',
 			'italic',
 			'link',
 			'bulletedList',
 			'numberedList',
-			'imageUpload',
+//			'imageUpload',
+			'imageEmbed', // <--- ADDED
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
